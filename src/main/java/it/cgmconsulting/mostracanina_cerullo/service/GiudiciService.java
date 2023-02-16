@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.Year;
 import java.util.Date;
 import java.util.List;
+import it.cgmconsulting.mostracanina_cerullo.entity.Giudice;
 
 @Service
 public class GiudiciService {
@@ -16,7 +17,7 @@ public class GiudiciService {
     @Autowired
     GiudiceRepository giudiceRepository;
 
-    public List<GiudiceResponse> getGiudiceResponse(LocalDate data, String nomeMostra){
+    public List<Giudice> getGiudiceResponse(LocalDate data, String nomeMostra){
 
         return giudiceRepository.getGiudiceResponse(data, nomeMostra);
     }

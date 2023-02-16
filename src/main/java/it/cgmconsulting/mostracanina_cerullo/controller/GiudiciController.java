@@ -1,6 +1,7 @@
 package it.cgmconsulting.mostracanina_cerullo.controller;
 
 import it.cgmconsulting.mostracanina_cerullo.response.GiudiceRequest;
+import it.cgmconsulting.mostracanina_cerullo.response.GiudiceResponse;
 import it.cgmconsulting.mostracanina_cerullo.service.GiudiciService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.time.Year;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("giudice")
