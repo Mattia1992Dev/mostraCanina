@@ -56,13 +56,14 @@ public interface CaneRepository extends JpaRepository<Cane, String> {
     @Query(value = "SELECT new it.cgmconsulting.mostracanina_cerullo.response.CaneVincitore("
             + "c.codiceCane,"
             + "c.nome, "
-            + "AVG(v.voto), "
-            + "((ABS(r.pesoStandard-c.peso)/r.pesoStandard)*100+(ABS((r.altezzaStandard-c.altezza)/r.altezzaStandard)*100))"
+            + "AVG(v.voto) AS media, "
+            + "((ABS(r.pesoStandard-c.peso)/r.pesoStandard)*100+(ABS((r.altezzaStandard-c.altezza)/r.altezzaStandard)*100)) AS scostamento"
             + ") FROM Cane c "
             + "LEFT JOIN Razza r ON r.codiceRazza=c.razza.codiceRazza "
             + "LEFT JOIN Voti v ON c.codiceCane = v.votiId.cane.codiceCane "
             + "WHERE v.votiId.mostraCanina.mostraCaninaId.nomeMostra= :nomeMostra AND"
             + " v.votiId.mostraCanina.mostraCaninaId.anno= :anno "
+            + "ORDER BY media DESC, scostamento "
     )
     Optional<CaneVincitore> getVincitoreResponse(@Param("anno") LocalDate anno, @Param("nomeMostra") String nomeMostra );
 
