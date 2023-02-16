@@ -1,0 +1,37 @@
+1) - Lista di cani riportante il codice, nome e la data di nascita dei cani        [JPQL]
+ordinati dal più vecchio al più giovane;
+localhost:8083/cane/lista
+
+
+
+2) - Dato il nome del cane riportare i dati del proprietario: id, nome e cognome   [SQL]
+
+localhost:8083/proprietario/cerca?nomeCane="nomeCane"
+
+
+
+3) - estrarre il codice del cane, il suo nome ed il punteggio medio ottenuto dal        [JPQL]
+vincitore di un determinato concorso
+(a parità di punteggio vince il cane che meno si discosta dai valori standard della propria razza);
+
+localhost:8083/cane/vincitore?anno='anno'&nomeMostra='nomeMostra'
+
+
+
+4) - estrarre nome e cognome del giudice (o dei giudici) che in un determinato           [JPQL]
+  concorso ha mediamente dato i voti più bassi;
+
+localhost:8083/giudice/votominimo?anno='anno'&nomeMostra='nomeMostra'
+
+
+5) - individuare il cane o i cani (codice, nome, data di nascita) più giovane/i;          [JPQL]
+
+localhost:8083/cane/giovane
+
+6) - Per ogni concorso individuare la/e razza/e che non vi hanno partecipato               [JPQL]
+
+localhost:8083/cane/noMostra
+
+
+
+
