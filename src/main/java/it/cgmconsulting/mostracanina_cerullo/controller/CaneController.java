@@ -32,13 +32,12 @@ public class CaneController {
         //List vincitore = caneService.getVincitoreResponse(anno, nomeMostra);
         //return new ResponseEntity<>(vincitore, HttpStatus.OK);
 
-            LocalDate inputDate = LocalDate.of(anno, 01, 01);
-        Optional<CaneVincitore> c= caneService.getVincitoreResponse(inputDate, nomeMostra);
-        List <String> caneVincitore=new ArrayList<>();
-        caneVincitore.add("codice cane: "+c.get().getCodiceCane());
-        caneVincitore.add("nome cane: "+c.get().getNome());
-        caneVincitore.add("media: "+c.get().getAvg());
-            return new ResponseEntity<>(caneVincitore, HttpStatus.OK);
+        LocalDate inputDate = LocalDate.of(anno, 01, 01);
+        List<CaneVincitore> c=caneService.getVincitoreResponse(inputDate, nomeMostra);
+        //List<List<CaneVincitore>> caneVincitore=new ArrayList<>();
+
+
+            return new ResponseEntity<>(caneService.getVincitoreResponse(inputDate, nomeMostra), HttpStatus.OK);
         }
 
 

@@ -51,21 +51,22 @@ public interface CaneRepository extends JpaRepository<Cane, String> {
             "GROUP BY v.codice_cane " +
             "ORDER BY punteggio_medio DESC, percentuale_scostamento LIMIT 5",nativeQuery = true
     )
-    List getVincitoreResponse(@Param("anno") int anno, @Param("nomeMostra") String nomeMostra );*/
+    List  getVincitoreResponse(@Param("anno") int anno, @Param("nomeMostra") String nomeMostra );*/
 
     @Query(value = "SELECT new it.cgmconsulting.mostracanina_cerullo.response.CaneVincitore("
             + "c.codiceCane,"
             + "c.nome, "
             + "AVG(v.voto) AS media, "
             + "((ABS(r.pesoStandard-c.peso)/r.pesoStandard)*100+(ABS((r.altezzaStandard-c.altezza)/r.altezzaStandard)*100)) AS scostamento"
-            + ") FROM Cane c "
-            + "LEFT JOIN Razza r ON r.codiceRazza=c.razza.codiceRazza "
+            + ") FROM Razza r "
+            + "LEFT JOIN Cane c ON r.codiceRazza=c.razza.codiceRazza "
             + "LEFT JOIN Voti v ON c.codiceCane = v.votiId.cane.codiceCane "
             + "WHERE v.votiId.mostraCanina.mostraCaninaId.nomeMostra= :nomeMostra AND"
             + " v.votiId.mostraCanina.mostraCaninaId.anno= :anno "
+            + "GROUP BY c.codiceCane "
             + "ORDER BY media DESC, scostamento "
     )
-    Optional<CaneVincitore> getVincitoreResponse(@Param("anno") LocalDate anno, @Param("nomeMostra") String nomeMostra );
+    List<CaneVincitore> getVincitoreResponse(@Param("anno") LocalDate anno, @Param("nomeMostra") String nomeMostra );
 
 }
 

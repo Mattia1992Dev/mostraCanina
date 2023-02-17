@@ -29,7 +29,7 @@ public class CaneService {
         return caneRepository.getCaneResponse();
     }
 
-    public Optional<CaneVincitore> getVincitoreResponse(LocalDate anno, String nomeMostra){
+    public List<CaneVincitore> getVincitoreResponse(LocalDate anno, String nomeMostra){
         return caneRepository.getVincitoreResponse(anno, nomeMostra);
     }
 
